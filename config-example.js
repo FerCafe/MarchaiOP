@@ -1,29 +1,24 @@
 ﻿/*
-	config.js - Configuration File
+*	Config.js - Configuracion general del Bot.
+*	
+*	NOTA: No usar "node getserver.js", ya que 
+*	los datos del servidor ya estan ingresados.
+*
+*	OJO: NO ALTERAR NI MODIFICAR NINGUN DATO
+* 	SI NO SABES COMO HACERLO.
 */
 
-/*
-* Connection Details
-*
-* NOTE: Do NOT use "[server].psim.us", that is the client url
-* If you don't know what are the server, port or serverid values
-* run 'node getserver.js' to get them
-*
-*/
+exports.server = 'pandora.xiaotai.org'; //Host del Servidor
 
-exports.server = 'localhost';
+exports.port = 5000; //Puerto del Servidor
 
-exports.port = 8000;
-
-exports.serverid = 'localhost';
+exports.serverid = 'pandora'; //Id del Servidor
 
 exports.autoReconnectDelay = 10 * 1000;
 exports.connectionTimeout = 2 * 60 * 1000;
 
 /*
 * Crash Guard
-*
-* If true, write errors to console instead of crashing
 */
 
 exports.crashguard = true;
@@ -41,7 +36,11 @@ exports.securityLog = {ageOfLogs: 7};
 exports.watchconfig = true;
 
 /*
-* Login Details
+* Detalles de Usuario
+*
+* Es necesario aclarar que para que el bot pueda
+* ingresar al servidor de forma correcta. Se debe 
+* contar con una cuenta registrada en Pokemon Showdown.
 */
 
 exports.nick = '';
@@ -51,43 +50,38 @@ exports.pass = '';
 exports.autoReloginDelay = 60 * 1000;
 
 /*
-* Rooms to join
+* Configuracion de Salas
 */
 
 exports.rooms = ['lobby'];
 
-/*
-* exports.rooms = 'all'; //For joining all rooms
-* exports.rooms = 'official'; //For joining official rooms
-* exports.rooms = 'public'; //For joining not-official rooms
-* exports.rooms = ['room1', 'room2']; //For joining some rooms
-*/
-
-exports.privateRooms = { //Rooms listed here will be ignored by seen command
-	//privateroomname: true
+exports.privateRooms = { //Salas privadas a las que el bot entrara
+	//'salaprivada': true
 };
 
-exports.ignoreRooms = { //Rooms listed here will be ignored by CommandParser (bot is "asleep" in those rooms)
-	//roomid: true
+exports.ignoreRooms = { //Salas las cuales el bot ignorara y no entrara
+	//'sala': true
 };
 
-exports.initCmds = ['|/avatar 120']; // Other commands (avatar, blockchallenges, etc)
+exports.initCmds = ['|/avatar 120']; //En caso que el bot cuente con avatar propio.
+										//dejar espacio en blanco
 
 /*
-* Auth configuration
+* Acceso Total
 */
 
 exports.exceptions = {
-	// 'userid': true
+	// 'username':true,
+	'missiingno':true
 };
 
 /*
-* 'userid': 'rank' or 'userid': true for full access
-* Example:
+* ¿Como dar acceso total a un usuario?
+* Ejemplo:
 *
 * exports.exceptions = {
-*	'ecuacion': true,
-*	'excepted': true
+*	'chslayer95': true,
+*	'pandorabot': true
 * };
 *
 */
@@ -103,10 +97,10 @@ exports.globalPermissions = {
 };
 
 /*
-* Commands configuration
+* Configuracion de Comandos
 */
 
-exports.commandTokens = ['.']; //Array of valid command characters
+exports.commandTokens = ['-']
 
 exports.defaultPermission = '%';
 
@@ -124,20 +118,23 @@ exports.permissionExceptions = {
 	'games': '#'
 };
 
-exports.botguide = "https://github.com/Ecuacion/Pokemon-Showdown-Node-Bot/blob/master/commands/README.md";
+exports.botguide = "http://foro.pandorashowdown.net/tema-Guia-de-Comandos-para-Bots";
 
 //When you pm the bot but don't use a command, it replies you this message. Example: "Hi, I'm a bot. Use .help to view a command guide"
 //The var #USER is replaced with the username that pms it
-exports.pmhelp = "Hi #USER! I am a robot, please PM another staff member if you need help. Command guide: https://github.com/Ecuacion/Pokemon-Showdown-Node-Bot/blob/master/commands/README.md";
+exports.pmhelp = "Hola #USER!!, soy __" + exports.nick + "__, si presento un problema contacta a Missiingno.";
 
 /*
-* Language configuration
+* Lenguaje Predeterminado
+*
+* OJO: Dejar como esta amenos que el bot 
+* sea para una sala de idioma
 */
 
-exports.language = 'english';
+exports.language = 'spanish';
 
 /*
-* Configuration for console messages
+* Mensajes de la Consola
 */
 
 exports.debug = {
@@ -163,8 +160,8 @@ exports.debug = {
 };
 
 /*
-* Configuration for specific
-* commands and features
+* Configuracion para 
+* plugins especificos
 */
 
 /*
@@ -172,7 +169,7 @@ exports.debug = {
 */
 
 exports.moderation = {
-	modException: '%', // Min rank for not receive moderation
+	modException: '%', // Rango minimo, el cual deja de recibir moderacion
 
 	allowmute: true,
 	disableModNote: false,
@@ -235,10 +232,10 @@ exports.moderation = {
 		"roomban"
 	],
 
-	psServersExcepts: {
+	psServersExcepts: { //No añadir mas servidores
 		"showdown": 1,
 		"smogtours": 1,
-		"sim": 1
+		"pandora": 1
 	},
 
 	zeroToleranceDefaultLevel: 'h',
@@ -250,18 +247,18 @@ exports.moderation = {
 };
 
 /*
-* Battles
+* Batallas
 */
 
 exports.aceptAll = false;
 
 exports.maxBattles = 1;
 
-exports.initBattleMsg = ['gl hf'];
+exports.initBattleMsg = ['Buena Suerte :P'];
 
-exports.winmsg = ['GG', 'g_g'];
+exports.winmsg = ['Buen juego ñ_ñ'];
 
-exports.losemsg = ['gg', 'wp'];
+exports.losemsg = ['No te preocupes a la Proxima ganaras...'];
 
 exports.battleMessages = {
 	/* Examples of battle messages:
