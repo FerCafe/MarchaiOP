@@ -1,8 +1,15 @@
 /*
-	Pokemon Showdown Bot, for NodeJS
-
-	By: Ecuacion
+	Index.js - Pandora Bots
 */
+
+var express = require('express');
+var app = express();
+
+var port = process.env.PORT || 8080;
+
+app.listen(port, function() {
+    console.log('Our app is running on http://localhost:' + port);
+});
 
 try {
 	require('sugar');
